@@ -120,6 +120,23 @@
         button:hover {
             background-color: blue;
         }
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
     </style>
 </head>
 <body>
@@ -132,22 +149,28 @@
             <div class="text-box" onclick="changeText()">
                 <b id="text-content">HAII BFF</b>
             </div>
-            <button onclick="playPause()">Putar</button>
-            <button onclick="goToPage2()">Ke Halaman Berikutnya</button>
+            <button onclick="playPause()">Putar/Pause</button>
+            <button id="nextButton" onclick="goToPage2()">Selanjutnya</button>
             <audio id="audio" src="music/y2mate.com - DJ SETIAP KALI KITA BERTEMU AKU LIHAT KAMU SENYUM PADAKU  DJ GAK PAKE LAMA YANG KALIAN CARI CARI.mp3"></audio>
         </div>
     </div>
     <script>
         const texts = [
-            "",
+            "HAII BFF",
             "AKU PUNYA PANTUN",
             "IKAN HIU DI ATAS GENTENG",
             "I LOVE YOU SENGG",
-            "MAAF YAA BFF",
-            "BARU BISA NGASIH KAYA BEGINI DOANG",
-            "NANTI AKU UPGRADE LAGII",
+            "KAMU JANGAN LUPA MAKAN YAA",
+            "JANGAN BEGADANG TERUS",
+            "KECUALI KALO WEEKEND GAPAPA",
+            "ITU JUGA HARUS BEGADANG SAMA AKU",
+            "BERCANDAA HEHEHE",
+            "AKU PUNYA TEBAK TEBAKAN",
+            "KAMU KLIK TOMBOL SELANJUTNYA YAA"
         ];
         let textIndex = 0;
+        let textsFinished = false;
+
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
@@ -158,15 +181,19 @@
                 heart.remove();
             }, 5000);
         }
+
+        setInterval(createHeart, 300);
+
         function changeText() {
             if (textIndex < texts.length - 1) {
                 textIndex++;
                 document.getElementById('text-content').textContent = texts[textIndex];
-            } else {
-                document.getElementById('text-content').textContent = texts[textIndex];
+                if (textIndex === texts.length - 1) {
+                    textsFinished = true;
+                }
             }
         }
-        setInterval(createHeart, 300);
+
         function playPause() {
             var audio = document.getElementById('audio');
             if (audio.paused) {
@@ -175,9 +202,25 @@
                 audio.pause();
             }
         }
+
         function goToPage2() {
-            window.location.href = "page2.html";
+            if (!textsFinished) {
+                alert("Di pencet dulu tulisannya sampe selesai");
+                const nextButton = document.getElementById('nextButton');
+                nextButton.classList.add('shake');
+                setTimeout(() => {
+                    nextButton.classList.remove('shake');
+                }, 500);
+            } else {
+                window.location.href = "page2.html";
+            }
         }
+
+        // Play audio automatically when page loads
+        window.onload = function() {
+            var audio = document.getElementById('audio');
+            audio.play();
+        };
     </script>
 </body>
 </html>
