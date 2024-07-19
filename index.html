@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOR MY BFF</title>
-    <link rel="icon" href="./vici/WhatsApp Image 2024-07-16 at 20.14.19 (1).jpeg">
+    <link rel="icon" href="./foto/WhatsApp Image 2024-07-16 at 20.14.19 (1).jpeg">
     <style>
         body, html {
             margin: 0;
@@ -18,12 +18,12 @@
             color: rgb(10, 7, 0);
         }
         .background {
-            position: absolute;
+            position:absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             z-index: -1;
             background-image: url(./foto/WhatsApp\ Image\ 2024-07-16\ at\ 21.00.22.jpeg);
             background-size: contain;
@@ -84,7 +84,7 @@
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-            width: 255px;
+            width: 300px;
             text-align: center;
             background-color: rgba(255, 255, 255, 0.342);
         }
@@ -147,25 +147,33 @@
         <img src="./foto/WhatsApp Image 2024-07-16 at 20.14.19.jpeg" alt="Card Image" class="card-image">
         <div class="card-content">
             <div class="text-box" onclick="changeText()">
-                <b id="text-content">HAII BFF</b>
+                <b id="text-content">HAII TANTE CACA</b>
             </div>
-            <button onclick="playPause()">Putar/Pause</button>
+            <button onclick="playPause()">Play/Pause</button>
             <button id="nextButton" onclick="goToPage2()">Selanjutnya</button>
-            <audio id="audio" src="music/y2mate.com - DJ SETIAP KALI KITA BERTEMU AKU LIHAT KAMU SENYUM PADAKU  DJ GAK PAKE LAMA YANG KALIAN CARI CARI.mp3"></audio>
+            <audio id="audio" src="./music/y2mate.com - Sal Priadi  Dari planet lain Official Music Video.mp3" autoplay></audio>
         </div>
     </div>
     <script>
         const texts = [
-            "HAII BFF",
+            "",
             "AKU PUNYA PANTUN",
             "IKAN HIU DI ATAS GENTENG",
             "I LOVE YOU SENGG",
             "KAMU JANGAN LUPA MAKAN YAA",
+            "DI JAGA KESEHATANNYA",
             "JANGAN BEGADANG TERUS",
             "KECUALI KALO WEEKEND GAPAPA",
             "ITU JUGA HARUS BEGADANG SAMA AKU",
             "BERCANDAA HEHEHE",
+            "TAPI KALO KAMU MAU",
+            "AKU JUGA PASTI MAU HEHEHEHE",
+            "AKU PUNYA PANTUN LAGII",
+            "IKAN HIU SUKA AYU TING TING",
+            "YOU ARE MY EVERYTHING",
+            "MAAF YA KALO PANTUNNYA IKAN HIU TERUS HEHEHE",
             "AKU PUNYA TEBAK TEBAKAN",
+            "AKU YAKIN KAMU PASTI BISA",
             "KAMU KLIK TOMBOL SELANJUTNYA YAA"
         ];
         let textIndex = 0;
@@ -205,7 +213,7 @@
 
         function goToPage2() {
             if (!textsFinished) {
-                alert("Di pencet dulu tulisannya sampe selesai");
+                alert("Di pencet dulu tulisannya sampe selesai sayaanggkuu cintaakuu duniakuu semestaakuu");
                 const nextButton = document.getElementById('nextButton');
                 nextButton.classList.add('shake');
                 setTimeout(() => {
@@ -215,12 +223,6 @@
                 window.location.href = "page2.html";
             }
         }
-
-        // Play audio automatically when page loads
-        window.onload = function() {
-            var audio = document.getElementById('audio');
-            audio.play();
-        };
     </script>
 </body>
 </html>
