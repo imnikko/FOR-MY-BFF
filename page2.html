@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOR MY BFF</title>
-    <link rel="icon" href="./foto/WhatsApp Image 2024-07-16 at 20.14.19 (1).jpeg">
+    <link rel="icon" href="./foto/WhatsApp Image 2024-07-18 at 12.22.08.jpeg">
     <style>
-        /* Existing styles */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             overflow: hidden; 
-            display: grid;
+            display: flex;
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
@@ -27,16 +26,13 @@
         }
         .background .section {
             flex: 1;
-            background-size:contain;
+            background-size: contain;
             background-position: center;
         }
         .section-1 {
             background-image: url('./foto/WhatsApp Image 2024-07-18 at 12.21.38.jpeg');
         }
         .section-2 {
-            background-image: url('./foto/WhatsApp\ Image\ 2024-07-18\ at\ 12.22.08.jpeg');
-        }
-        .section-3 {
             background-image: url('./foto/WhatsApp\ Image\ 2024-07-18\ at\ 12.22.28.jpeg');
         }
         .heart {
@@ -140,7 +136,6 @@
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
-        /* Styles for stars */
         .star {
             position: absolute;
             width: 3px;
@@ -160,7 +155,6 @@
     <div class="background">
         <div class="section section-1"></div>
         <div class="section section-2"></div>
-        <div class="section section-3"></div>
     </div>
     <div class="container">
         <div class="tebakan-container">
@@ -171,13 +165,11 @@
         <button id="backButton" onclick="goToHomePage()">Kembali</button>
     </div>
     
-    <!-- Add the audio element here -->
     <audio autoplay loop>
         <source src="./music/y2mate.com - nadhif basalamah  penjaga hati Official Lyric Video.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
     
-    <!-- Add the lights effect -->
     <div class="lights" id="lights"></div>
 
     <script>
@@ -198,7 +190,6 @@
             { pertanyaan: "patih kerajaan majapahit pengucap sumpah palapa, bernama", jawaban: "gajah mada" },
             { pertanyaan: "kapan tanggal lahir ronaldo", jawaban: "5 februari 1985" },
             { pertanyaan: "do you love me?", jawaban: "yes" },
-            // Tambahkan tebakan lain di sini
         ];
         let indexTebakan = 0;
 
