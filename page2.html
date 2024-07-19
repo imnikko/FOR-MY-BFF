@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOR MY BFF</title>
+    <link rel="icon" href="./foto/WhatsApp Image 2024-07-16 at 20.14.19 (1).jpeg">
     <style>
+        /* Existing styles */
         body, html {
             margin: 0;
             padding: 0;
@@ -14,7 +16,6 @@
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
         }
         .background {
             position: absolute;
@@ -22,11 +23,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            background-image: url(./foto/WhatsApp\ Image\ 2024-07-18\ at\ 12.21.38.jpeg);
-            background-size: contain;
+            display: flex;
+        }
+        .background .section {
+            flex: 1;
+            background-size: cover;
             background-position: center;
+        }
+        .section-1 {
+            background-image: url('./foto/WhatsApp Image 2024-07-18 at 12.21.38.jpeg');
+        }
+        .section-2 {
+            background-image: url('./foto/WhatsApp\ Image\ 2024-07-18\ at\ 12.22.08.jpeg');
+        }
+        .section-3 {
+            background-image: url('./foto/WhatsApp\ Image\ 2024-07-18\ at\ 12.22.28.jpeg');
         }
         .heart {
             position: absolute;
@@ -60,6 +71,21 @@
         .container {
             text-align: center;
             z-index: 10;
+            background-color: rgba(255, 255, 255, 0.404);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .tebakan {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #cccccca8;
         }
         button {
             background-color: black;
@@ -77,15 +103,105 @@
         button:hover {
             background-color: blue;
         }
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        .lights {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .light {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(241, 207, 13);
+            border-radius: 50%;
+            animation: blink 1s infinite alternate;
+        }
+        @keyframes blink {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        /* Styles for stars */
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: rgb(251, 251, 252);
+            border-radius: 50%;
+            box-shadow: 0 0 10px white, 0 0 20px white;
+            animation: starFall 5s linear infinite;
+        }
+        @keyframes starFall {
+            0% { top: -10%; opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
     </style>
 </head>
 <body>
-    <div class="background"></div>
-    <div class="container">
-        <h1>Selamat Datang di Halaman Kedua</h1>
-        <button onclick="goToHomePage()">Kembali</button>
+    <div class="background">
+        <div class="section section-1"></div>
+        <div class="section section-2"></div>
+        <div class="section section-3"></div>
     </div>
+    <div class="container">
+        <div class="tebakan-container">
+            <div class="tebakan" id="tebakan">siapa nama panjang kamu</div>
+            <input type="text" id="jawaban" placeholder="Masukkan jawaban">
+            <button onclick="cekJawaban()">Cek Jawaban</button>
+        </div>
+        <button id="backButton" onclick="goToHomePage()">Kembali</button>
+    </div>
+    
+    <!-- Add the audio element here -->
+    <audio autoplay loop>
+        <source src="./music/y2mate.com - nadhif basalamah  penjaga hati Official Lyric Video.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Add the lights effect -->
+    <div class="lights" id="lights"></div>
+
     <script>
+        const tebakan = [
+            { pertanyaan: "", jawaban: "khansa fairuz" },
+            { pertanyaan: "siapa nama panjang aku", jawaban: "nikko janerio jibril" },
+            { pertanyaan: "1+1=?", jawaban: "2" },
+            { pertanyaan: "100-50=?", jawaban: "50" },
+            { pertanyaan: "bahasa inggrisnya kepala", jawaban: "head" },
+            { pertanyaan: "bahasa inggrisnya mata", jawaban: "eyes" },
+            { pertanyaan: "bahasa italianya kaki", jawaban: "piede" },
+            { pertanyaan: "tanggal berapa indonesia merdeka?", jawaban: "17 agustus 1945" },
+            { pertanyaan: "siapa nama pencipta bom atom", jawaban: "oppenheimer" },
+            { pertanyaan: "siapa presiden ke-3 amerika serikat", jawaban: "thomas jefferson" },
+            { pertanyaan: "apa nama wabah penyakit yang sempat melanda eropa dan asia pada pertengahan tahun 1300-an?", jawaban: "black death" },
+            { pertanyaan: "dimanakah kapal titanic tenggelam?", jawaban: "samudra atlantik" },
+            { pertanyaan: "bangsa belanda datang ke indonesia tahun 1596 dipimpin oleh?", jawaban: "cornelis de houtman" },
+            { pertanyaan: "patih kerajaan majapahit pengucap sumpah palapa, bernama", jawaban: "gajah mada" },
+            { pertanyaan: "kapan tanggal lahir ronaldo", jawaban: "5 februari 1985" },
+            { pertanyaan: "do you love me?", jawaban: "yes" },
+            // Tambahkan tebakan lain di sini
+        ];
+        let indexTebakan = 0;
+
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
@@ -96,10 +212,67 @@
                 heart.remove();
             }, 5000);
         }
+
         setInterval(createHeart, 300);
-        function goToHomePage() {
-            window.location.href = "index.html";
+
+        function cekJawaban() {
+            const jawabanInput = document.getElementById('jawaban').value.trim().toLowerCase();
+            const jawabanBenar = tebakan[indexTebakan].jawaban.toLowerCase();
+
+            if (jawabanInput === jawabanBenar) {
+                alert("YEAYY BENERR");
+                indexTebakan++;
+                if (indexTebakan < tebakan.length) {
+                    document.getElementById('tebakan').textContent = tebakan[indexTebakan].pertanyaan;
+                } else {
+                    alert("YEAYY SELESAII");
+                }
+                document.getElementById('jawaban').value = "";
+            } else {
+                alert("Yahh jawaban kamu salah, coba lagi yaa");
+                document.getElementById('jawaban').value = "";
+            }
         }
+
+        function goToHomePage() {
+            if (indexTebakan < tebakan.length) {
+                alert("Selesaiin dulu tebak tebakannya sayaanggkuu cintaakuu duniakuu semestaakuu");
+                const backButton = document.getElementById('backButton');
+                backButton.classList.add('shake');
+                setTimeout(() => {
+                    backButton.classList.remove('shake');
+                }, 500);
+            } else {
+                window.location.href = "index.html";
+            }
+        }
+
+        function createLight() {
+            const light = document.createElement('div');
+            light.classList.add('light');
+            light.style.left = Math.random() * 100 + 'vw';
+            light.style.top = Math.random() * 100 + 'vh';
+            light.style.animationDuration = Math.random() * 1 + 0.5 + 's';
+            document.getElementById('lights').appendChild(light);
+            setTimeout(() => {
+                light.remove();
+            }, 1000);
+        }
+
+        setInterval(createLight, 200);
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(star);
+            setTimeout(() => {
+                star.remove();
+            }, 5000);
+        }
+
+        setInterval(createStar, 300);
     </script>
 </body>
 </html>
